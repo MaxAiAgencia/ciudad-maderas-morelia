@@ -2,7 +2,7 @@ import { maxaiLogo } from '../assets/maxai-logo'
 
 export default function Footer() {
   return (
-    <footer>
+    <footer style={{ flexDirection: 'column', alignItems: 'center', gap: '1.2rem' }}>
       <div className="foot-logo">
         <img
           src="https://maderasrealstate.com/wp-content/uploads/2025/07/CIUDAD-MADERAS-1.png"
