@@ -2,8 +2,9 @@ import { maxaiLogo } from '../assets/maxai-logo'
 
 export default function Footer() {
   return (
-    <footer style={{ flexDirection: 'column', alignItems: 'center', gap: '1.2rem' }}>
-      <div className="foot-logo">
+    <footer>
+      {/* Izquierda: logo Ciudad Maderas */}
+      <div className="foot-logo" style={{ flex: 1 }}>
         <img
           src="https://maderasrealstate.com/wp-content/uploads/2025/07/CIUDAD-MADERAS-1.png"
           alt="Ciudad Maderas"
@@ -14,10 +15,16 @@ export default function Footer() {
         </span>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem' }}>
-        <span style={{ fontSize: '.68rem', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--muted)' }}>Creado por</span>
+      {/* Centro: texto "Creado por MaxAI" + logo */}
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.5rem' }}>
+        <span style={{ fontSize: '.68rem', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--muted)' }}>
+          Creado por MaxAI
+        </span>
         <img src={maxaiLogo} alt="MaxAI" style={{ height: '22px', objectFit: 'contain', filter: 'grayscale(1) brightness(0.6)' }} />
       </div>
+
+      {/* Derecha: espacio vacío para balance visual */}
+      <div style={{ flex: 1 }} />
     </footer>
   )
 }
