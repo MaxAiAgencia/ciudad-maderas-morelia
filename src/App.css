@@ -16,7 +16,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5vw;background:rgba(13,17,23,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
 nav.scrolled{padding:.8rem 5vw}
 .nav-logo{display:flex;align-items:center}
-.nav-logo img{height:44px;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 0 10px rgba(200,151,60,.7))}
+.nav-logo img{height:44px;object-fit:contain;}
 .nav-logo-fallback{font-family:'Playfair Display',serif;font-size:1.3rem;letter-spacing:.06em;color:var(--cream);display:none}
 .nav-logo-fallback span{color:var(--gold)}
 .nav-links{display:flex;gap:2.4rem;list-style:none}
@@ -134,7 +134,7 @@ nav.scrolled{padding:.8rem 5vw}
 
 /* FOOTER */
 footer{background:var(--dark2);padding:2.5rem 5vw;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.foot-logo img{height:34px;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(200,151,60,.5))}
+.foot-logo img{height:34px;object-fit:contain;}
 .foot-copy{font-size:.72rem;letter-spacing:.08em;color:var(--muted)}
 .foot-links{display:flex;gap:2rem;list-style:none}
 .foot-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
