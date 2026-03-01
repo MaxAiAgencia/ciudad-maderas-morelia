@@ -26,11 +26,13 @@ export default function Nav() {
   return (
     <nav id="mainNav" className={scrolled ? 'scrolled' : ''}>
       <div className="nav-logo">
-        <img
-          src="https://maderasrealstate.com/wp-content/uploads/2025/07/CIUDAD-MADERAS-1.png"
-          alt="Ciudad Maderas"
-          onError={e => { e.target.style.display = 'none'; document.getElementById('logoFallback').style.display = 'block' }}
-        />
+        <div style={{ background: 'rgba(255,255,255,0.92)', padding: '5px 14px', borderRadius: '6px' }}>
+          <img
+            src="/logo-ciudad-maderas.png"
+            alt="Ciudad Maderas"
+            onError={e => { e.target.closest('div').style.background = 'none'; e.target.style.display = 'none'; document.getElementById('logoFallback').style.display = 'block' }}
+          />
+        </div>
         <span className="nav-logo-fallback" id="logoFallback">Ciudad<span>Maderas</span></span>
       </div>
 

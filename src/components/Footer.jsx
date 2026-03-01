@@ -5,11 +5,13 @@ export default function Footer() {
     <footer>
       {/* Izquierda: logo Ciudad Maderas */}
       <div className="foot-logo" style={{ flex: 1 }}>
-        <img
-          src="https://maderasrealstate.com/wp-content/uploads/2025/07/CIUDAD-MADERAS-1.png"
-          alt="Ciudad Maderas"
-          onError={e => { e.target.style.display = 'none'; document.getElementById('footFallback').style.display = 'inline' }}
-        />
+        <div style={{ background: 'rgba(255,255,255,0.92)', padding: '4px 12px', borderRadius: '5px', display: 'inline-flex' }}>
+          <img
+            src="/logo-ciudad-maderas.png"
+            alt="Ciudad Maderas"
+            onError={e => { e.target.closest('div').style.background = 'none'; e.target.style.display = 'none'; document.getElementById('footFallback').style.display = 'inline' }}
+          />
+        </div>
         <span style={{ display: 'none', fontFamily: "'Playfair Display',serif", fontSize: '1.1rem', color: 'var(--cream)' }} id="footFallback">
           Ciudad<span style={{ color: 'var(--gold)' }}>Maderas</span>
         </span>
