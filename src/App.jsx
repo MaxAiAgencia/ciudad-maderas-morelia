@@ -46,43 +46,21 @@ export default function App() {
       const widget = document.querySelector('elevenlabs-convai')
       if (!widget || !widget.shadowRoot) return
 
-      // LOG: ver todos los botones en el shadow DOM
-      const allBtns = widget.shadowRoot.querySelectorAll('button')
-      if (allBtns.length > 0) {
-        allBtns.forEach(b => {
-          console.log('SHADOW BTN:', b.getAttribute('aria-label'), b.textContent.trim(), b.className)
-        })
-      }
-
-      // Buscar botón de colgar con múltiples selectores posibles
-      const endBtn =
-        widget.shadowRoot.querySelector('button[aria-label="end"]') ||
-        widget.shadowRoot.querySelector('button[aria-label="End call"]') ||
-        widget.shadowRoot.querySelector('button[aria-label="Hang up"]') ||
-        widget.shadowRoot.querySelector('button[data-testid="end-call"]') ||
-        [...widget.shadowRoot.querySelectorAll('button')].find(b =>
-          b.textContent.toLowerCase().includes('end') ||
-          b.textContent.toLowerCase().includes('hang') ||
-          b.textContent.toLowerCase().includes('colgar')
-        )
-
+      const endBtn = widget.shadowRoot.querySelector('button[aria-label="End"]')
       const btn = document.getElementById('btn-colgar')
 
       if (endBtn && !callActive) {
         callActive = true
         if (btn) btn.style.display = 'flex'
-        console.log('LLAMADA ACTIVA - botón encontrado:', endBtn)
       } else if (!endBtn && callActive) {
         callActive = false
         if (btn) btn.style.display = 'none'
-        console.log('LLAMADA TERMINADA')
       }
     }
 
     const handleMessage = (e) => {
       try {
         const raw = typeof e.data === 'string' ? e.data : JSON.stringify(e.data)
-        console.log('POSTMESSAGE:', raw.substring(0, 200))
         const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
         if (!data) return
         if (raw.includes('redirect_whatsapp') || raw.includes('whatsapp')) {
@@ -106,14 +84,8 @@ export default function App() {
   const colgarLlamada = () => {
     const widget = document.querySelector('elevenlabs-convai')
     if (!widget || !widget.shadowRoot) return
-    const allBtns = widget.shadowRoot.querySelectorAll('button')
-    // Intentar todos los botones posibles
-    const endBtn =
-      widget.shadowRoot.querySelector('button[aria-label="end"]') ||
-      widget.shadowRoot.querySelector('button[aria-label="End call"]') ||
-      [...allBtns].find(b => b.textContent.toLowerCase().includes('end'))
+    const endBtn = widget.shadowRoot.querySelector('button[aria-label="End"]')
     if (endBtn) endBtn.click()
-    else console.warn('No se encontró botón end, botones disponibles:', [...allBtns].map(b => b.getAttribute('aria-label')))
   }
 
   return (
@@ -124,12 +96,12 @@ export default function App() {
       {/* Widget ElevenLabs */}
       <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" />
 
-      {/* Botón colgar — VISIBLE SIEMPRE para prueba */}
+      {/* Botón colgar — oculto hasta que la llamada esté activa */}
       <button
         id="btn-colgar"
         onClick={colgarLlamada}
         style={{
-          display: 'flex',
+          display: 'none',
           alignItems: 'center',
           gap: '8px',
           position: 'fixed',
