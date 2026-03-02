@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Ventajas from './components/Ventajas'
@@ -8,6 +8,8 @@ import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 
 export default function App() {
+  const pollingRef = useRef(null)
+
   // Custom cursor
   useEffect(() => {
     const cur = document.getElementById('cur')
@@ -26,7 +28,7 @@ export default function App() {
     return () => { window.removeEventListener('mousemove', onMove); cancelAnimationFrame(rafId) }
   }, [])
 
-  // Intersection Observer para animaciones reveal
+  // Intersection Observer
   useEffect(() => {
     const obs = new IntersectionObserver(
       es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in') }),
@@ -36,34 +38,59 @@ export default function App() {
     return () => obs.disconnect()
   }, [])
 
-  // ElevenLabs: redirect WhatsApp + botón colgar
+  // ElevenLabs: detectar llamada activa + tool redirect_whatsapp
   useEffect(() => {
-    const handleCall = (e) => {
-      const conversation = e.detail?.conversation
-      if (!conversation) return
+    let callActive = false
 
-      // Mostrar botón al iniciar
+    const checkWidget = () => {
+      const widget = document.querySelector('elevenlabs-convai')
+      if (!widget || !widget.shadowRoot) return
+
+      // Detectar si hay llamada activa mirando el botón "end" en el shadow DOM
+      const endBtn = widget.shadowRoot.querySelector('button[aria-label="end"]')
       const btn = document.getElementById('btn-colgar')
-      if (btn) btn.style.display = 'inline-block'
 
-      // Escuchar tool calls
-      conversation.addEventListener('tool_call', (tool) => {
-        if (tool.tool_name === 'redirect_whatsapp') {
+      if (endBtn && !callActive) {
+        // Llamada iniciada
+        callActive = true
+        if (btn) btn.style.display = 'inline-block'
+      } else if (!endBtn && callActive) {
+        // Llamada terminada
+        callActive = false
+        if (btn) btn.style.display = 'none'
+      }
+    }
+
+    // Escuchar mensajes del widget via postMessage
+    const handleMessage = (e) => {
+      try {
+        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
+        if (!data) return
+
+        // Detectar tool call redirect_whatsapp
+        if (
+          data.type === 'tool_call' ||
+          data.tool_name === 'redirect_whatsapp' ||
+          (data.name === 'redirect_whatsapp') ||
+          JSON.stringify(data).includes('redirect_whatsapp')
+        ) {
           window.open(
-            'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos',
+            'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
             '_blank'
           )
         }
-      })
-
-      // Ocultar botón al terminar
-      conversation.addEventListener('disconnect', () => {
-        if (btn) btn.style.display = 'none'
-      })
+      } catch (_) {}
     }
 
-    window.addEventListener('elevenlabs-convai:call', handleCall)
-    return () => window.removeEventListener('elevenlabs-convai:call', handleCall)
+    window.addEventListener('message', handleMessage)
+
+    // Polling cada 500ms para detectar estado del botón end
+    pollingRef.current = setInterval(checkWidget, 500)
+
+    return () => {
+      window.removeEventListener('message', handleMessage)
+      clearInterval(pollingRef.current)
+    }
   }, [])
 
   const colgarLlamada = () => {
@@ -79,7 +106,6 @@ export default function App() {
       <div className="cur" id="cur" />
       <div className="cur-ring" id="curRing" />
 
-      {/* WhatsApp — OCULTO mientras ElevenLabs esté activo */}
       <a
         href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
         target="_blank"
@@ -96,7 +122,7 @@ export default function App() {
       {/* Widget ElevenLabs */}
       <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" />
 
-      {/* Botón colgar — aparece solo cuando hay llamada activa */}
+      {/* Botón colgar */}
       <button
         id="btn-colgar"
         onClick={colgarLlamada}
