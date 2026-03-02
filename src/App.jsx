@@ -105,7 +105,7 @@ export default function App() {
           alignItems: 'center',
           gap: '8px',
           position: 'fixed',
-          bottom: '900px',
+          bottom: '90px',
           right: '16px',
           background: '#e53935',
           color: 'white',
