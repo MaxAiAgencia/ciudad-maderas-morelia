@@ -38,7 +38,7 @@ export default function App() {
     return () => obs.disconnect()
   }, [])
 
-  // ElevenLabs: detectar llamada activa + tool redirect_whatsapp
+  // ElevenLabs: polling + postMessage
   useEffect(() => {
     let callActive = false
 
@@ -46,34 +46,46 @@ export default function App() {
       const widget = document.querySelector('elevenlabs-convai')
       if (!widget || !widget.shadowRoot) return
 
-      // Detectar si hay llamada activa mirando el botón "end" en el shadow DOM
-      const endBtn = widget.shadowRoot.querySelector('button[aria-label="end"]')
+      // LOG: ver todos los botones en el shadow DOM
+      const allBtns = widget.shadowRoot.querySelectorAll('button')
+      if (allBtns.length > 0) {
+        allBtns.forEach(b => {
+          console.log('SHADOW BTN:', b.getAttribute('aria-label'), b.textContent.trim(), b.className)
+        })
+      }
+
+      // Buscar botón de colgar con múltiples selectores posibles
+      const endBtn =
+        widget.shadowRoot.querySelector('button[aria-label="end"]') ||
+        widget.shadowRoot.querySelector('button[aria-label="End call"]') ||
+        widget.shadowRoot.querySelector('button[aria-label="Hang up"]') ||
+        widget.shadowRoot.querySelector('button[data-testid="end-call"]') ||
+        [...widget.shadowRoot.querySelectorAll('button')].find(b =>
+          b.textContent.toLowerCase().includes('end') ||
+          b.textContent.toLowerCase().includes('hang') ||
+          b.textContent.toLowerCase().includes('colgar')
+        )
+
       const btn = document.getElementById('btn-colgar')
 
       if (endBtn && !callActive) {
-        // Llamada iniciada
         callActive = true
-        if (btn) btn.style.display = 'inline-block'
+        if (btn) btn.style.display = 'flex'
+        console.log('LLAMADA ACTIVA - botón encontrado:', endBtn)
       } else if (!endBtn && callActive) {
-        // Llamada terminada
         callActive = false
         if (btn) btn.style.display = 'none'
+        console.log('LLAMADA TERMINADA')
       }
     }
 
-    // Escuchar mensajes del widget via postMessage
     const handleMessage = (e) => {
       try {
+        const raw = typeof e.data === 'string' ? e.data : JSON.stringify(e.data)
+        console.log('POSTMESSAGE:', raw.substring(0, 200))
         const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
         if (!data) return
-
-        // Detectar tool call redirect_whatsapp
-        if (
-          data.type === 'tool_call' ||
-          data.tool_name === 'redirect_whatsapp' ||
-          (data.name === 'redirect_whatsapp') ||
-          JSON.stringify(data).includes('redirect_whatsapp')
-        ) {
+        if (raw.includes('redirect_whatsapp') || raw.includes('whatsapp')) {
           window.open(
             'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
             '_blank'
@@ -83,8 +95,6 @@ export default function App() {
     }
 
     window.addEventListener('message', handleMessage)
-
-    // Polling cada 500ms para detectar estado del botón end
     pollingRef.current = setInterval(checkWidget, 500)
 
     return () => {
@@ -95,10 +105,15 @@ export default function App() {
 
   const colgarLlamada = () => {
     const widget = document.querySelector('elevenlabs-convai')
-    if (widget && widget.shadowRoot) {
-      const endBtn = widget.shadowRoot.querySelector('button[aria-label="end"]')
-      if (endBtn) endBtn.click()
-    }
+    if (!widget || !widget.shadowRoot) return
+    const allBtns = widget.shadowRoot.querySelectorAll('button')
+    // Intentar todos los botones posibles
+    const endBtn =
+      widget.shadowRoot.querySelector('button[aria-label="end"]') ||
+      widget.shadowRoot.querySelector('button[aria-label="End call"]') ||
+      [...allBtns].find(b => b.textContent.toLowerCase().includes('end'))
+    if (endBtn) endBtn.click()
+    else console.warn('No se encontró botón end, botones disponibles:', [...allBtns].map(b => b.getAttribute('aria-label')))
   }
 
   return (
@@ -106,41 +121,30 @@ export default function App() {
       <div className="cur" id="cur" />
       <div className="cur-ring" id="curRing" />
 
-      <a
-        href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
-        target="_blank"
-        rel="noreferrer"
-        className="wa-float"
-        aria-label="WhatsApp"
-        style={{ display: 'none' }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-      </a>
-
       {/* Widget ElevenLabs */}
       <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" />
 
-      {/* Botón colgar */}
+      {/* Botón colgar — VISIBLE SIEMPRE para prueba */}
       <button
         id="btn-colgar"
         onClick={colgarLlamada}
         style={{
-          display: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
           position: 'fixed',
           bottom: '100px',
           right: '20px',
           background: '#e53935',
           color: 'white',
-          padding: '12px 24px',
-          fontSize: '16px',
+          padding: '14px 28px',
+          fontSize: '18px',
           fontWeight: 'bold',
           borderRadius: '50px',
           border: 'none',
           cursor: 'pointer',
           zIndex: 9999,
-          boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+          boxShadow: '0 4px 16px rgba(229,57,53,0.5)'
         }}
       >
         📞 Terminar llamada
