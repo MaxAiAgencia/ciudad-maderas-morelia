@@ -36,12 +36,50 @@ export default function App() {
     return () => obs.disconnect()
   }, [])
 
+  // ElevenLabs: redirect WhatsApp + botón colgar
+  useEffect(() => {
+    const handleCall = (e) => {
+      const conversation = e.detail?.conversation
+      if (!conversation) return
+
+      // Mostrar botón al iniciar
+      const btn = document.getElementById('btn-colgar')
+      if (btn) btn.style.display = 'inline-block'
+
+      // Escuchar tool calls
+      conversation.addEventListener('tool_call', (tool) => {
+        if (tool.tool_name === 'redirect_whatsapp') {
+          window.open(
+            'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos',
+            '_blank'
+          )
+        }
+      })
+
+      // Ocultar botón al terminar
+      conversation.addEventListener('disconnect', () => {
+        if (btn) btn.style.display = 'none'
+      })
+    }
+
+    window.addEventListener('elevenlabs-convai:call', handleCall)
+    return () => window.removeEventListener('elevenlabs-convai:call', handleCall)
+  }, [])
+
+  const colgarLlamada = () => {
+    const widget = document.querySelector('elevenlabs-convai')
+    if (widget && widget.shadowRoot) {
+      const endBtn = widget.shadowRoot.querySelector('button[aria-label="end"]')
+      if (endBtn) endBtn.click()
+    }
+  }
+
   return (
     <>
       <div className="cur" id="cur" />
       <div className="cur-ring" id="curRing" />
 
-      {/* WhatsApp — OCULTO mientras ElevenLabs esté activo. Quitar display:none para reactivar */}
+      {/* WhatsApp — OCULTO mientras ElevenLabs esté activo */}
       <a
         href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
         target="_blank"
@@ -57,6 +95,30 @@ export default function App() {
 
       {/* Widget ElevenLabs */}
       <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" />
+
+      {/* Botón colgar — aparece solo cuando hay llamada activa */}
+      <button
+        id="btn-colgar"
+        onClick={colgarLlamada}
+        style={{
+          display: 'none',
+          position: 'fixed',
+          bottom: '100px',
+          right: '20px',
+          background: '#e53935',
+          color: 'white',
+          padding: '12px 24px',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          borderRadius: '50px',
+          border: 'none',
+          cursor: 'pointer',
+          zIndex: 9999,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+        }}
+      >
+        📞 Terminar llamada
+      </button>
 
       <Nav />
       <Hero />
