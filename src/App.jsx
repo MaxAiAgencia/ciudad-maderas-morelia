@@ -38,7 +38,7 @@ export default function App() {
     return () => obs.disconnect()
   }, [])
 
-  // ElevenLabs: polling + postMessage
+  // ElevenLabs: polling + client tool WhatsApp
   useEffect(() => {
     let callActive = false
 
@@ -58,26 +58,25 @@ export default function App() {
       }
     }
 
-    const handleMessage = (e) => {
-      try {
-        const raw = typeof e.data === 'string' ? e.data : JSON.stringify(e.data)
-        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data
-        if (!data) return
-        if (raw.includes('redirect_whatsapp') || raw.includes('whatsapp')) {
-          window.open(
-            'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
-            '_blank'
-          )
-        }
-      } catch (_) {}
+    const handleToolCall = (e) => {
+      if (e.detail?.tool_name === 'redirect_whatsapp') {
+        window.open(
+          'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
+          '_blank'
+        )
+      }
     }
 
-    window.addEventListener('message', handleMessage)
+    const widget = document.querySelector('elevenlabs-convai')
+    if (widget) {
+      widget.addEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
+    }
+
     pollingRef.current = setInterval(checkWidget, 500)
 
     return () => {
-      window.removeEventListener('message', handleMessage)
       clearInterval(pollingRef.current)
+      if (widget) widget.removeEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
     }
   }, [])
 
