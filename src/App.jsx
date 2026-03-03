@@ -59,6 +59,7 @@ export default function App() {
     }
 
     const handleToolCall = (e) => {
+      console.log('🔧 tool call recibido:', e.detail)
       if (e.detail?.tool_name === 'redirect_whatsapp') {
         window.open(
           'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
@@ -69,6 +70,9 @@ export default function App() {
 
     const widget = document.querySelector('elevenlabs-convai')
     if (widget) {
+      // DEBUG — escucha todos los eventos posibles
+      widget.addEventListener('elevenlabs-convai:client-tool-call', (e) => console.log('✅ client-tool-call:', e.detail))
+      widget.addEventListener('message', (e) => console.log('📨 message:', e.detail))
       widget.addEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
     }
 
