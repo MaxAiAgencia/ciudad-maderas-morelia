@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   const pollingRef = useRef(null)
+  const toolListenerRef = useRef(false) // para no registrar el listener dos veces
 
   // Custom cursor
   useEffect(() => {
@@ -42,22 +43,6 @@ export default function App() {
   useEffect(() => {
     let callActive = false
 
-    const checkWidget = () => {
-      const widget = document.querySelector('elevenlabs-convai')
-      if (!widget || !widget.shadowRoot) return
-
-      const endBtn = widget.shadowRoot.querySelector('button[aria-label="End"]')
-      const btn = document.getElementById('btn-colgar')
-
-      if (endBtn && !callActive) {
-        callActive = true
-        if (btn) btn.style.display = 'flex'
-      } else if (!endBtn && callActive) {
-        callActive = false
-        if (btn) btn.style.display = 'none'
-      }
-    }
-
     const handleToolCall = (e) => {
       console.log('🔧 tool call recibido:', e.detail)
       if (e.detail?.tool_name === 'redirect_whatsapp') {
@@ -78,16 +63,36 @@ export default function App() {
       }
     }
 
-    const widget = document.querySelector('elevenlabs-convai')
-    if (widget) {
-      widget.addEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
+    const checkWidget = () => {
+      const widget = document.querySelector('elevenlabs-convai')
+      if (!widget || !widget.shadowRoot) return
+
+      // Registrar listener de WhatsApp solo una vez
+      if (!toolListenerRef.current) {
+        widget.addEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
+        toolListenerRef.current = true
+        console.log('✅ listener de client-tool registrado')
+      }
+
+      const endBtn = widget.shadowRoot.querySelector('button[aria-label="End"]')
+      const btn = document.getElementById('btn-colgar')
+
+      if (endBtn && !callActive) {
+        callActive = true
+        if (btn) btn.style.display = 'flex'
+      } else if (!endBtn && callActive) {
+        callActive = false
+        if (btn) btn.style.display = 'none'
+      }
     }
 
     pollingRef.current = setInterval(checkWidget, 500)
 
     return () => {
       clearInterval(pollingRef.current)
+      const widget = document.querySelector('elevenlabs-convai')
       if (widget) widget.removeEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
+      toolListenerRef.current = false
     }
   }, [])
 
