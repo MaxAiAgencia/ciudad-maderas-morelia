@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   const pollingRef = useRef(null)
-  const toolListenerRef = useRef(false) // para no registrar el listener dos veces
+  const callListenerRef = useRef(false)
 
   // Custom cursor
   useEffect(() => {
@@ -43,36 +43,32 @@ export default function App() {
   useEffect(() => {
     let callActive = false
 
-    const handleToolCall = (e) => {
-      console.log('🔧 tool call recibido:', e.detail)
-      if (e.detail?.tool_name === 'redirect_whatsapp') {
-        window.open(
-          'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
-          '_blank'
-        )
-        // Confirmar al widget que la herramienta se ejecutó
-        const widget = document.querySelector('elevenlabs-convai')
-        if (widget) {
-          widget.dispatchEvent(new CustomEvent('elevenlabs-convai:client-tool-result', {
-            detail: {
-              tool_call_id: e.detail?.tool_call_id,
-              result: 'success'
-            }
-          }))
+    // ✅ MÉTODO OFICIAL: inyectar clientTools en el evento 'call'
+    const handleCall = (event) => {
+      console.log('📞 llamada iniciada, inyectando client tools...')
+      event.detail.config.clientTools = {
+        redirect_whatsapp: () => {
+          console.log('✅ redirect_whatsapp ejecutado!')
+          window.open(
+            'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
+            '_blank'
+          )
         }
       }
     }
 
     const checkWidget = () => {
       const widget = document.querySelector('elevenlabs-convai')
-      if (!widget || !widget.shadowRoot) return
+      if (!widget) return
 
-      // Registrar listener de WhatsApp solo una vez
-      if (!toolListenerRef.current) {
-        widget.addEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
-        toolListenerRef.current = true
-        console.log('✅ listener de client-tool registrado')
+      // Registrar listener de call solo una vez
+      if (!callListenerRef.current) {
+        widget.addEventListener('elevenlabs-convai:call', handleCall)
+        callListenerRef.current = true
+        console.log('✅ listener de call registrado')
       }
+
+      if (!widget.shadowRoot) return
 
       const endBtn = widget.shadowRoot.querySelector('button[aria-label="End"]')
       const btn = document.getElementById('btn-colgar')
@@ -91,8 +87,8 @@ export default function App() {
     return () => {
       clearInterval(pollingRef.current)
       const widget = document.querySelector('elevenlabs-convai')
-      if (widget) widget.removeEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
-      toolListenerRef.current = false
+      if (widget) widget.removeEventListener('elevenlabs-convai:call', handleCall)
+      callListenerRef.current = false
     }
   }, [])
 
@@ -108,10 +104,8 @@ export default function App() {
       <div className="cur" id="cur" />
       <div className="cur-ring" id="curRing" />
 
-      {/* Widget ElevenLabs */}
       <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" />
 
-      {/* Botón colgar — oculto hasta que la llamada esté activa */}
       <button
         id="btn-colgar"
         onClick={colgarLlamada}
