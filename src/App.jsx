@@ -65,14 +65,21 @@ export default function App() {
           'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
           '_blank'
         )
+        // Confirmar al widget que la herramienta se ejecutó
+        const widget = document.querySelector('elevenlabs-convai')
+        if (widget) {
+          widget.dispatchEvent(new CustomEvent('elevenlabs-convai:client-tool-result', {
+            detail: {
+              tool_call_id: e.detail?.tool_call_id,
+              result: 'success'
+            }
+          }))
+        }
       }
     }
 
     const widget = document.querySelector('elevenlabs-convai')
     if (widget) {
-      // DEBUG — escucha todos los eventos posibles
-      widget.addEventListener('elevenlabs-convai:client-tool-call', (e) => console.log('✅ client-tool-call:', e.detail))
-      widget.addEventListener('message', (e) => console.log('📨 message:', e.detail))
       widget.addEventListener('elevenlabs-convai:client-tool-call', handleToolCall)
     }
 
