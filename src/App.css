@@ -1,8 +1,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --dark:#0f2547;--dark2:#1a3461;--dark3:#1e3d78;
-  --gold:#c8973c;--gold2:#e6b55a;--gold-glow:rgba(200,151,60,.18);
-  --cream:#f4efe6;--muted:rgba(244,239,230,.5);--border:rgba(200,151,60,.22);
+  --gold:#b6a269;--gold2:#ccc08a;--gold-glow:rgba(182,162,105,.18);
+  --cream:#f4efe6;--muted:rgba(244,239,230,.5);--border:rgba(182,162,105,.22);
 }
 html{scroll-behavior:auto}
 body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden}
@@ -20,7 +20,7 @@ nav.scrolled{padding:.8rem 5vw}
 .nav-logo-fallback{font-family:'Playfair Display',serif;font-size:1.3rem;letter-spacing:.06em;color:var(--cream);display:none}
 .nav-logo-fallback span{color:var(--gold)}
 .nav-links{display:flex;gap:2.4rem;list-style:none}
-.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,230,.9);text-decoration:none;transition:color .25s}
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--dark);background:var(--gold);padding:.6rem 1.5rem;text-decoration:none;transition:background .25s,transform .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
@@ -109,7 +109,9 @@ nav.scrolled{padding:.8rem 5vw}
 .pilar-text .s{font-size:.8rem;color:var(--muted);margin-top:.2rem;font-weight:300}
 
 /* CONTACTO */
-.contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+#contacto{position:relative;overflow:hidden}
+#contacto::before{content:'';position:absolute;inset:0;background:url('/logo-ciudad-maderas.png') no-repeat center center;background-size:55%;opacity:.06;pointer-events:none;z-index:0}
+.contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
 .contacto-col{display:flex;flex-direction:column}
 .contacto-col-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:.8rem}
 .contacto-col-title em{font-style:italic;color:var(--gold)}
