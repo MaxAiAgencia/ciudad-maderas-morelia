@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
 const SLIDES = [
-  'https://maderasrealstate.com/wp-content/uploads/2025/06/BANNERS-PAG-INICIO-1.png',
-  'https://maderasrealstate.com/wp-content/uploads/2025/07/QRO-BOSQUES-sur-2-tomas-dron-frame-at-0m2s-sin-logos.jpg',
-  'https://maderasrealstate.com/wp-content/uploads/2025/07/Razones-para-invertir-en-el-Caribe-frame-at-0m19s-850x570.jpg',
-  'https://maderasrealstate.com/wp-content/uploads/2025/07/chuburna-frame-at-8m47s-850x570.jpg',
-  'https://maderasrealstate.com/wp-content/uploads/2025/08/monterrey-005.png',
+  '/1.jpeg',
+  '/2.jpeg',
+  '/3.jpeg',
+  '/4.jpeg',
+  '/5.jpeg',
 ]
 
 function scrollTo(id) {
