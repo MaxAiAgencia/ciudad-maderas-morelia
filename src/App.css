@@ -32,7 +32,7 @@ nav.scrolled{padding:.8rem 5vw}
 .hero-slides{position:absolute;inset:0;z-index:0}
 .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:cover;background-position:center}
 .hero-slide.active{opacity:1}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(110deg,rgba(15,37,71,.94) 36%,rgba(15,37,71,.48) 100%);z-index:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(110deg,rgba(15,37,71,.78) 36%,rgba(15,37,71,.28) 100%);z-index:1}
 .hero-dots{position:absolute;bottom:118px;left:5vw;display:flex;gap:.6rem;z-index:3}
 .hero-dot{width:28px;height:3px;background:rgba(244,239,230,.25);cursor:pointer;transition:all .3s;border:none}
 .hero-dot.active{background:var(--gold);width:52px}
