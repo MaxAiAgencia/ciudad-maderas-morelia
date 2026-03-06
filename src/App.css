@@ -109,9 +109,7 @@ nav.scrolled{padding:.8rem 5vw}
 .pilar-text .s{font-size:.8rem;color:var(--muted);margin-top:.2rem;font-weight:300}
 
 /* CONTACTO */
-#contacto{position:relative;overflow:hidden}
-#contacto::before{content:'';position:absolute;inset:0;background:url('/logo-ciudad-maderas.png') no-repeat center center;background-size:55%;opacity:.06;pointer-events:none;z-index:0}
-.contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
+.contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .contacto-col{display:flex;flex-direction:column}
 .contacto-col-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:.8rem}
 .contacto-col-title em{font-style:italic;color:var(--gold)}
