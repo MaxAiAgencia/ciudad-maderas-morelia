@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-content">
-        <p className="hero-eyebrow">Terrenos · Morelia, Michoacán</p>
+        <p className="hero-eyebrow">Terrenos y Casas Premium</p>
         <h1>Tu terreno,<br />tu <em>mejor</em><br />inversión</h1>
         <p className="hero-sub">
           Terrenos con escrituras en las ciudades de mayor plusvalía de México. Desde <strong>$1,386 al mes</strong>, con crédito directo, sin buró y sin aval.
