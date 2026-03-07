@@ -6,13 +6,13 @@ const VENTAJAS = [
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>,
-    title: 'Desde $1,386 al mes',
-    desc: 'Mensualidades accesibles con enganche desde el 1%. Sin sorpresas ni letras chiquitas.',
+    title: 'Desde $1,231 al mes',
+    desc: 'Mensualidades accesibles con enganche del 1 al 10%. Sin sorpresas ni letras chiquitas.',
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
-    title: '+30 Amenidades incluidas',
-    desc: 'Parques, canchas, áreas verdes, ciclopista, alberca y más. Todo desde el primer día.',
+    title: '+20 Amenidades · +30 Desarrollos',
+    desc: 'Más de 20 amenidades por desarrollo y más de 30 desarrollos en México. Todo desde el primer día.',
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>,
