@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { CIUDADES } from '../data/ciudadesData'
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [dropOpen, setDropOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -17,6 +20,7 @@ export default function Nav() {
       window.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' })
     }
     setMenuOpen(false)
+    setDropOpen(false)
   }
 
   const menuStyle = menuOpen
@@ -38,7 +42,48 @@ export default function Nav() {
 
       <ul className="nav-links" style={menuStyle}>
         <li><a href="#ventajas" onClick={e => { e.preventDefault(); scrollTo('#ventajas') }}>Ventajas</a></li>
-        <li><a href="#ciudades" onClick={e => { e.preventDefault(); scrollTo('#ciudades') }}>Ciudades</a></li>
+
+        {/* DROPDOWN CIUDADES */}
+        <li
+          className="nav-dropdown"
+          onMouseEnter={() => setDropOpen(true)}
+          onMouseLeave={() => setDropOpen(false)}
+        >
+          <a
+            href="#ciudades"
+            onClick={e => { e.preventDefault(); scrollTo('#ciudades') }}
+            className="nav-dropdown-trigger"
+          >
+            Ciudades
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginLeft: '4px' }}><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          {dropOpen && (
+            <ul className="nav-dropdown-menu">
+              {CIUDADES.map(c => (
+                <li key={c.slug}>
+                  <Link to={`/ciudades/${c.slug}`} onClick={() => setDropOpen(false)}>
+                    <span>{c.name}</span>
+                    {!c.listo && <span className="nav-drop-soon">Pronto</span>}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Mobile: expandable list */}
+          {menuOpen && (
+            <ul className="nav-drop-mobile">
+              {CIUDADES.map(c => (
+                <li key={c.slug}>
+                  <Link to={`/ciudades/${c.slug}`} onClick={() => { setMenuOpen(false); setDropOpen(false) }}>
+                    {c.name} {!c.listo && '· Pronto'}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+
         <li><a href="#credito" onClick={e => { e.preventDefault(); scrollTo('#credito') }}>Crédito</a></li>
         <li><a href="#contacto" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>Contacto</a></li>
       </ul>
