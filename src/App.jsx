@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Ventajas from './components/Ventajas'
 import Ciudades from './components/Ciudades'
 import Credito from './components/Credito'
+import VideoSection from './components/VideoSection'
 import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 
@@ -136,6 +137,7 @@ export default function App() {
       <Ventajas />
       <Ciudades />
       <Credito />
+      <VideoSection />
       <Contacto />
       <Footer />
     </>
