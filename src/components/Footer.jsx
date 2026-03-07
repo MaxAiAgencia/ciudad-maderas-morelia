@@ -1,5 +1,3 @@
-import { maxaiLogo } from '../assets/maxai-logo'
-
 export default function Footer() {
   return (
     <footer>
@@ -26,7 +24,7 @@ export default function Footer() {
         <span style={{ fontSize: '.68rem', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>
           por
         </span>
-        <img src={maxaiLogo} alt="MaxAI" style={{ height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.7 }} />
+        <img src="/LogoMaxAI.png" alt="MaxAI" style={{ height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.7 }} />
       </div>
 
       {/* Derecha: espacio vacío para balance visual */}
