@@ -134,10 +134,10 @@ export default function App() {
 
       <Nav />
       <Hero />
-      <Ventajas />
+      <VideoSection />
       <Ciudades />
       <Credito />
-      <VideoSection />
+      <Ventajas />
       <Contacto />
       <Footer />
     </>
