@@ -151,6 +151,13 @@ export default function CiudadPage() {
                 </li>
               ))}
             </ul>
+            {ciudad.imgCroquis && (
+              <img
+                src={ciudad.imgCroquis}
+                alt={`Plano de desarrollo ${ciudad.desarrollo}`}
+                className="cp-croquis-img"
+              />
+            )}
           </div>
           <div className="cp-amenidades">
             <p className="cp-eyebrow">Amenidades</p>

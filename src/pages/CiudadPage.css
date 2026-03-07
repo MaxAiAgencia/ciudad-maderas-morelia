@@ -71,6 +71,9 @@
 .cp-cta-final .cp-sec-title { margin-bottom: 1rem; }
 .cp-cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
 
+/* CROQUIS / MASTER PLAN IMAGE */
+.cp-croquis-img { width: 100%; border-radius: 10px; margin-top: 1.5rem; border: 1px solid var(--border); object-fit: cover; display: block; }
+
 /* PRÓXIMAMENTE */
 .cp-proxima { min-height: 100vh; display: flex; flex-direction: column; background: var(--dark); }
 .cp-proxima-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 5vw; gap: 1.2rem; }
