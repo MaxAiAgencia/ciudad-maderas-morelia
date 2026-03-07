@@ -17,12 +17,16 @@ export default function Footer() {
         </span>
       </div>
 
-      {/* Centro: texto "Creado por MaxAI" + logo */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.5rem' }}>
-        <span style={{ fontSize: '.68rem', letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--muted)' }}>
-          Creado por MaxAI
+      {/* Centro: Creado con ❤️ + logo MaxAI en blanco */}
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.4rem' }}>
+        <span style={{ fontSize: '.68rem', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>
+          Creado con
         </span>
-        <img src={maxaiLogo} alt="MaxAI" style={{ height: '22px', objectFit: 'contain', filter: 'grayscale(1) brightness(0.6)' }} />
+        <span style={{ color: '#e05252', fontSize: '.85rem', lineHeight: 1 }}>♥</span>
+        <span style={{ fontSize: '.68rem', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>
+          por
+        </span>
+        <img src={maxaiLogo} alt="MaxAI" style={{ height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.7 }} />
       </div>
 
       {/* Derecha: espacio vacío para balance visual */}
