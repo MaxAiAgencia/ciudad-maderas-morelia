@@ -63,7 +63,6 @@ export default function Nav() {
                 <li key={c.slug}>
                   <Link to={`/ciudades/${c.slug}`} onClick={() => setDropOpen(false)}>
                     <span>{c.name}</span>
-                    {!c.listo && <span className="nav-drop-soon">Pronto</span>}
                   </Link>
                 </li>
               ))}
@@ -76,7 +75,7 @@ export default function Nav() {
               {CIUDADES.map(c => (
                 <li key={c.slug}>
                   <Link to={`/ciudades/${c.slug}`} onClick={() => { setMenuOpen(false); setDropOpen(false) }}>
-                    {c.name} {!c.listo && '· Pronto'}
+                    {c.name}
                   </Link>
                 </li>
               ))}

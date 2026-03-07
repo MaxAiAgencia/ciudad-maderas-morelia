@@ -51,7 +51,7 @@ export default function Hero() {
         <p className="hero-eyebrow">Terrenos y Casas Premium</p>
         <h1>Tu terreno,<br />tu <em>mejor</em><br />inversión</h1>
         <p className="hero-sub">
-          Terrenos con escrituras en las ciudades de mayor plusvalía de México. Desde <strong>$1,386 al mes</strong>, con crédito directo, sin buró y sin aval.
+          Terrenos con escrituras en las ciudades de mayor plusvalía de México. Desde <strong>$1,231 al mes</strong>, con crédito directo, sin buró y sin aval.
         </p>
         <div className="hero-actions">
           <a href="#ciudades" className="btn-gold" onClick={e => { e.preventDefault(); scrollTo('#ciudades') }}>
@@ -65,10 +65,10 @@ export default function Hero() {
       </div>
 
       <div className="stats-row">
-        <div className="stat"><span className="stat-num">+30</span><div className="stat-lbl">Amenidades por desarrollo</div></div>
-        <div className="stat"><span className="stat-num">9+</span><div className="stat-lbl">Ciudades disponibles</div></div>
+        <div className="stat"><span className="stat-num">+20</span><div className="stat-lbl">Amenidades por desarrollo</div></div>
+        <div className="stat"><span className="stat-num">+30</span><div className="stat-lbl">Desarrollos en México</div></div>
         <div className="stat"><span className="stat-num">30</span><div className="stat-lbl">Años de crédito directo</div></div>
-        <div className="stat"><span className="stat-num">1%</span><div className="stat-lbl">Enganche mínimo</div></div>
+        <div className="stat"><span className="stat-num">1–10%</span><div className="stat-lbl">De enganche</div></div>
       </div>
     </section>
   )
