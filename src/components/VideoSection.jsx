@@ -8,7 +8,7 @@ export default function VideoSection() {
       <div className="video-wrap rev">
         <div className="video-container">
           <iframe
-            src="https://www.youtube.com/embed/EJuf3Ar0iF0"
+            src="https://www.youtube.com/embed/FLqeNQy_NHk"
             title="Ciudad Maderas"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
