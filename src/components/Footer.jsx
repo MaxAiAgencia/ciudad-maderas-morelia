@@ -24,7 +24,9 @@ export default function Footer() {
         <span style={{ fontSize: '.68rem', letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--muted)' }}>
           por
         </span>
-        <img src="/LogoMaxAI.png" alt="MaxAI" style={{ height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.7 }} />
+        <a href="https://www.maxaiagencia.com" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <img src="/LogoMaxAI.png" alt="MaxAI" style={{ height: '20px', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.7 }} />
+        </a>
       </div>
 
       {/* Derecha: espacio vacío para balance visual */}

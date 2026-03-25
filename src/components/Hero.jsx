@@ -51,7 +51,7 @@ export default function Hero() {
         <p className="hero-eyebrow">Terrenos y Casas Premium</p>
         <h1>Tu terreno,<br />tu <em>mejor</em><br />inversión</h1>
         <p className="hero-sub">
-          Terrenos con escrituras en las ciudades de mayor plusvalía de México. Desde <strong>$1,231 al mes</strong>, con crédito directo, sin buró y sin aval.
+          Terrenos con escrituras en las ciudades de mayor plusvalía de México. Desde <strong>$1,106 al mes</strong>, con crédito directo, sin buró y sin aval.
         </p>
         <div className="hero-actions">
           <a href="#ciudades" className="btn-gold" onClick={e => { e.preventDefault(); scrollTo('#ciudades') }}>
