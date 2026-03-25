@@ -6,7 +6,7 @@ const VENTAJAS = [
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>,
-    title: 'Desde $1,231 al mes',
+    title: 'Desde $1,106 al mes',
     desc: 'Mensualidades accesibles con enganche del 1 al 10%. Sin sorpresas ni letras chiquitas.',
   },
   {
