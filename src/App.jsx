@@ -51,7 +51,7 @@ export default function App({ lang = 'es' }) {
         redirect_whatsapp: () => {
           console.log('✅ redirect_whatsapp ejecutado!')
           window.open(
-            'https://wa.me/524437919303?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
+            'https://wa.me/524433250555?text=Hola,%20me%20interesa%20información%20sobre%20los%20terrenos%20en%20Ciudad%20Maderas',
             '_blank'
           )
         }
@@ -107,7 +107,7 @@ export default function App({ lang = 'es' }) {
 
       {/* WhatsApp flotante */}
       <a
-        href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
+        href="https://wa.me/524433250555?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
         target="_blank"
         rel="noreferrer"
         className="wa-float"

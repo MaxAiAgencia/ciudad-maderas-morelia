@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const WA_NUM = '524437919303'
+const WA_NUM = '524433250555'
 
 const TX = {
   es: {
@@ -113,8 +113,8 @@ export default function Contacto({ lang = 'es' }) {
             {tx.desc}
           </p>
           <div className="contact-cards">
-            <a href="tel:+524437919303" className="contact-card">
-              <PhoneIcon /><div><div className="label">{tx.phone1lbl}</div><div className="value">443 791 9303</div></div>
+            <a href="tel:+524433250555" className="contact-card">
+              <PhoneIcon /><div><div className="label">{tx.phone1lbl}</div><div className="value">443 325 0555</div></div>
             </a>
             <a href="tel:+524433685399" className="contact-card">
               <PhoneIcon /><div><div className="label">{tx.phone2lbl}</div><div className="value">443 368 5399</div></div>

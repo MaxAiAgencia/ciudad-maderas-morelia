@@ -3,7 +3,7 @@ import { getCiudad } from '../data/ciudadesData'
 import Footer from '../components/Footer'
 import './CiudadPage.css'
 
-const WA_NUM = '524437919303'
+const WA_NUM = '524433250555'
 
 function waLink(ciudad) {
   const txt = `Hola Eduardo, me interesa información sobre terrenos Ciudad Maderas en ${ciudad} 🏡`
