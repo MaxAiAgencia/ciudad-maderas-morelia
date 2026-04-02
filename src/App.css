@@ -182,8 +182,10 @@ footer{background:var(--dark2);padding:2.5rem 5vw;border-top:1px solid var(--bor
 .foot-links a:hover{color:var(--gold)}
 
 /* FLOATING BUTTONS */
-.wa-float{position:fixed;bottom:5.5rem;right:1.8rem;z-index:300;width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s;text-decoration:none}
-.wa-float:hover{transform:scale(1.1)}
+@keyframes wa-pulse{0%,100%{transform:scale(1);box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{transform:scale(1.12);box-shadow:0 8px 32px rgba(37,211,102,.65)}}
+.wa-float{position:fixed;top:67%;right:1rem;z-index:9997;width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;animation:wa-pulse 2.5s ease-in-out infinite}
+.wa-float:hover{animation:none;transform:scale(1.15);box-shadow:0 8px 32px rgba(37,211,102,.65)}
+elevenlabs-convai{position:fixed;right:.8rem;top:53%;z-index:9998}
 
 /* Reveal */
 .rev{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}

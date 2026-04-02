@@ -41,7 +41,6 @@ export default function App() {
     return () => obs.disconnect()
   }, [])
 
-  /* ElevenLabs — desactivado temporalmente. Descomentar todo este bloque para reactivar el agente de voz.
   useEffect(() => {
     let callActive = false
 
@@ -93,7 +92,6 @@ export default function App() {
       callListenerRef.current = false
     }
   }, [])
-  */
 
   const colgarLlamada = () => {
     const widget = document.querySelector('elevenlabs-convai')
@@ -132,11 +130,11 @@ export default function App() {
         </svg>
       </a>
 
-      {/* ElevenLabs — desactivado temporalmente. Descomentar para reactivar el agente de voz */}
-      {/* <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" /> */}
+      {/* ElevenLabs — agente de voz activo */}
+      <elevenlabs-convai agent-id="agent_9201kjge18fcfvdr98yrc223rqwk" />
 
-      {/* Botón colgar ElevenLabs — se reactiva junto con el agente de voz */}
-      {/* <button
+      {/* Botón colgar ElevenLabs */}
+      <button
         id="btn-colgar"
         onClick={colgarLlamada}
         style={{
@@ -159,7 +157,7 @@ export default function App() {
         }}
       >
         📞 Terminar llamada
-      </button> */}
+      </button>
 
       <Nav />
       <Hero />
