@@ -24,6 +24,8 @@ nav.scrolled{padding:.8rem 5vw}
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--dark);background:var(--gold);padding:.6rem 1.5rem;text-decoration:none;transition:background .25s,transform .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+.nav-lang-toggle{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.3rem .8rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s}
+.nav-lang-toggle:hover{background:var(--gold);color:var(--dark)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .hamburger span{width:24px;height:2px;background:var(--cream);display:block;transition:.3s}
 /* NAV DROPDOWN */
@@ -55,12 +57,6 @@ nav.scrolled{padding:.8rem 5vw}
 .cm-lbl{font-size:.8rem;color:rgba(244,239,230,.8);margin-top:.4rem;line-height:1.5}
 .cm-stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%}
 
-/* WA TAB */
-.wa-tab{position:fixed;right:0;top:40%;z-index:9998;background:#B4A269;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.15em;padding:.65rem .8rem;border-radius:6px 0 0 6px;white-space:nowrap;writing-mode:vertical-lr;text-decoration:none;transition:background .3s,transform .3s;text-transform:uppercase}
-.wa-tab:hover{background:#c8a855;transform:translateX(-4px)}
-.wa-tab-lg{display:none}
-.wa-tab-sm{display:block}
-@media(min-width:640px){.wa-tab-lg{display:block}.wa-tab-sm{display:none}}
 
 /* HERO CAROUSEL */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
@@ -185,7 +181,6 @@ footer{background:var(--dark2);padding:2.5rem 5vw;border-top:1px solid var(--bor
 @keyframes wa-pulse{0%,100%{transform:scale(1);box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{transform:scale(1.12);box-shadow:0 8px 32px rgba(37,211,102,.65)}}
 .wa-float{position:fixed;top:67%;right:1rem;z-index:9997;width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;animation:wa-pulse 2.5s ease-in-out infinite}
 .wa-float:hover{animation:none;transform:scale(1.15);box-shadow:0 8px 32px rgba(37,211,102,.65)}
-elevenlabs-convai{position:fixed;right:.8rem;top:53%;z-index:9998}
 
 /* Reveal */
 .rev{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}

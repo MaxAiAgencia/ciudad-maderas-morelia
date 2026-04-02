@@ -1,45 +1,38 @@
-const VENTAJAS = [
-  {
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-    title: 'Crédito Directo sin Buró',
-    desc: 'Sin revisión de buró de crédito ni aval. Financiamiento directo con el desarrollador hasta 30 años.',
-  },
-  {
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>,
-    title: 'Desde $1,106 al mes',
-    desc: 'Mensualidades accesibles con enganche del 1 al 10%. Sin sorpresas ni letras chiquitas.',
-  },
-  {
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
-    title: '+20 Amenidades · +30 Desarrollos',
-    desc: 'Más de 20 amenidades por desarrollo y más de 30 desarrollos en México. Todo desde el primer día.',
-  },
-  {
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>,
-    title: 'Escrituras y Seguridad Jurídica',
-    desc: 'Todos los terrenos con escrituras limpias y proceso legal verificado desde el inicio.',
-  },
-  {
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>,
-    title: 'Ciudades con Alta Plusvalía',
-    desc: 'Desarrollos en Querétaro, Cancún, Mérida, Monterrey y más, con crecimiento comprobado.',
-  },
-  {
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>,
-    title: 'Asesoría Personal en Morelia',
-    desc: 'Eduardo Sosa te acompaña de principio a fin, en persona, en nuestra oficina en Morelia.',
-  },
-]
+const VENTAJAS = {
+  es: [
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title: 'Crédito Directo sin Buró', desc: 'Sin revisión de buró de crédito ni aval. Financiamiento directo con el desarrollador hasta 30 años.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>, title: 'Desde $1,106 al mes', desc: 'Mensualidades accesibles con enganche del 1 al 10%. Sin sorpresas ni letras chiquitas.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>, title: '+20 Amenidades · +30 Desarrollos', desc: 'Más de 20 amenidades por desarrollo y más de 30 desarrollos en México. Todo desde el primer día.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>, title: 'Escrituras y Seguridad Jurídica', desc: 'Todos los terrenos con escrituras limpias y proceso legal verificado desde el inicio.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>, title: 'Ciudades con Alta Plusvalía', desc: 'Desarrollos en Querétaro, Cancún, Mérida, Monterrey y más, con crecimiento comprobado.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>, title: 'Asesoría Personal en Morelia', desc: 'Eduardo Sosa te acompaña de principio a fin, en persona, en nuestra oficina en Morelia.' },
+  ],
+  en: [
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, title: 'Direct Financing, No Credit Check', desc: 'No credit bureau review or guarantor required. Direct financing with the developer up to 30 years.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>, title: 'From $1,106 per month', desc: 'Affordable monthly payments with a 1–10% down payment. No surprises or hidden fees.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>, title: '+20 Amenities · +30 Developments', desc: 'Over 20 amenities per development and more than 30 developments across Mexico. All included from day one.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>, title: 'Title Deeds & Legal Security', desc: 'All lots come with clean title deeds and a legally verified process from the start.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>, title: 'High-Appreciation Cities', desc: 'Developments in Querétaro, Cancún, Mérida, Monterrey and more, with proven growth.' },
+    { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>, title: 'Personal Advice in Morelia', desc: 'Eduardo Sosa guides you from start to finish, in person, at our office in Morelia.' },
+  ],
+}
 
-export default function Ventajas() {
+const TX = {
+  es: { eyebrow: 'Por qué elegirnos', title: <>Ventajas que<br /><em>marcan la diferencia</em></> },
+  en: { eyebrow: 'Why Choose Us', title: <>Advantages that<br /><em>make the difference</em></> },
+}
+
+export default function Ventajas({ lang = 'es' }) {
+  const tx = TX[lang]
+  const ventajas = VENTAJAS[lang]
   return (
     <section className="section alt" id="ventajas">
       <div className="rev">
-        <p className="eyebrow">Por qué elegirnos</p>
-        <h2 className="sec-title">Ventajas que<br /><em>marcan la diferencia</em></h2>
+        <p className="eyebrow">{tx.eyebrow}</p>
+        <h2 className="sec-title">{tx.title}</h2>
       </div>
       <div className="ventajas-grid rev">
-        {VENTAJAS.map((v, i) => (
+        {ventajas.map((v, i) => (
           <div className="vent-card" key={i}>
             <div className="vent-icon">{v.icon}</div>
             <div className="vent-title">{v.title}</div>

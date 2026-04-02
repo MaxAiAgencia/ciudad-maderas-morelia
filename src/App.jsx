@@ -9,7 +9,7 @@ import VideoSection from './components/VideoSection'
 import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 
-export default function App() {
+export default function App({ lang = 'es' }) {
   const pollingRef = useRef(null)
   const callListenerRef = useRef(false)
 
@@ -105,18 +105,6 @@ export default function App() {
       <div className="cur" id="cur" />
       <div className="cur-ring" id="curRing" />
 
-      {/* Tab "CONTACTA A UN ASESOR" — lado derecho */}
-      <a
-        href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
-        target="_blank"
-        rel="noreferrer"
-        className="wa-tab"
-        aria-label="Contacta a un asesor"
-      >
-        <span className="wa-tab-lg">CONTACTA A UN ASESOR</span>
-        <span className="wa-tab-sm">CONTÁCTANOS</span>
-      </a>
-
       {/* WhatsApp flotante */}
       <a
         href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
@@ -159,14 +147,14 @@ export default function App() {
         📞 Terminar llamada
       </button>
 
-      <Nav />
-      <Hero />
-      <Contadores />
-      <VideoSection />
+      <Nav lang={lang} />
+      <Hero lang={lang} />
+      <Contadores lang={lang} />
+      <VideoSection lang={lang} />
       <Ciudades />
-      <Credito />
-      <Ventajas />
-      <Contacto />
+      <Credito lang={lang} />
+      <Ventajas lang={lang} />
+      <Contacto lang={lang} />
       <Footer />
     </>
   )

@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CIUDADES } from '../data/ciudadesData'
 
-export default function Nav() {
+const TX = {
+  es: { ventajas: 'Ventajas', ciudades: 'Ciudades', credito: 'Crédito', contacto: 'Contacto', cta: 'Quiero invertir', toggle: 'EN' },
+  en: { ventajas: 'Benefits', ciudades: 'Cities', credito: 'Financing', contacto: 'Contact', cta: 'I Want to Invest', toggle: 'ES' },
+}
+
+export default function Nav({ lang = 'es' }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [dropOpen, setDropOpen] = useState(false)
+  const tx = TX[lang]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -27,6 +33,8 @@ export default function Nav() {
     ? { display: 'flex', flexDirection: 'column', position: 'absolute', top: '100%', left: 0, right: 0, background: 'var(--dark2)', padding: '1.5rem 5vw', gap: '1.2rem', borderBottom: '1px solid var(--border)', zIndex: 199 }
     : {}
 
+  const toggleHref = lang === 'es' ? '/en' : '/'
+
   return (
     <nav id="mainNav" className={scrolled ? 'scrolled' : ''}>
       <div className="nav-logo">
@@ -41,7 +49,7 @@ export default function Nav() {
       </div>
 
       <ul className="nav-links" style={menuStyle}>
-        <li><a href="#ventajas" onClick={e => { e.preventDefault(); scrollTo('#ventajas') }}>Ventajas</a></li>
+        <li><a href="#ventajas" onClick={e => { e.preventDefault(); scrollTo('#ventajas') }}>{tx.ventajas}</a></li>
 
         {/* DROPDOWN CIUDADES */}
         <li
@@ -54,7 +62,7 @@ export default function Nav() {
             onClick={e => { e.preventDefault(); scrollTo('#ciudades') }}
             className="nav-dropdown-trigger"
           >
-            Ciudades
+            {tx.ciudades}
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginLeft: '4px' }}><polyline points="6 9 12 15 18 9"/></svg>
           </a>
           {dropOpen && (
@@ -83,12 +91,15 @@ export default function Nav() {
           )}
         </li>
 
-        <li><a href="#credito" onClick={e => { e.preventDefault(); scrollTo('#credito') }}>Crédito</a></li>
-        <li><a href="#contacto" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>Contacto</a></li>
+        <li><a href="#credito" onClick={e => { e.preventDefault(); scrollTo('#credito') }}>{tx.credito}</a></li>
+        <li><a href="#contacto" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>{tx.contacto}</a></li>
+        <li>
+          <Link to={toggleHref} className="nav-lang-toggle">{tx.toggle}</Link>
+        </li>
       </ul>
 
       <a href="#contacto" className="nav-cta" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>
-        Quiero invertir
+        {tx.cta}
       </a>
 
       <button className="hamburger" onClick={() => setMenuOpen(v => !v)} aria-label="Menú">

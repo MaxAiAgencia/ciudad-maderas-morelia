@@ -1,14 +1,12 @@
-export default function Contadores() {
+export default function Contadores({ lang = 'es' }) {
+  const isEn = lang === 'en'
   return (
     <>
       {/* Desktop: video webm de contadores */}
       <div className="contadores-wrap">
         <video
           src="https://storage.googleapis.com/landing-ciudad-maderas/somos/Contadores%20VF2.webm"
-          autoPlay
-          loop
-          muted
-          playsInline
+          autoPlay loop muted playsInline
           className="contadores-video"
         />
       </div>
@@ -17,25 +15,33 @@ export default function Contadores() {
       <div className="contadores-mobile">
         <div className="cm-stat rev">
           <div className="cm-num-row">
-            <span className="cm-prefix">Más<br/>de</span>
+            <span className="cm-prefix">{isEn ? 'More\nthan' : 'Más\nde'}</span>
             <span className="cm-num">40</span>
           </div>
-          <p className="cm-lbl">Años de experiencia<br/>en el sector</p>
+          <p className="cm-lbl">
+            {isEn ? <>Years of experience<br />in the sector</> : <>Años de experiencia<br />en el sector</>}
+          </p>
         </div>
 
         <div className="cm-stat rev">
           <span className="cm-num">+124,000</span>
-          <p className="cm-lbl">Lotes habitacionales y comerciales</p>
+          <p className="cm-lbl">
+            {isEn ? 'Residential and commercial lots' : 'Lotes habitacionales y comerciales'}
+          </p>
         </div>
 
         <div className="cm-stats-row rev">
           <div className="cm-stat">
             <span className="cm-num">28</span>
-            <p className="cm-lbl">Desarrollos en<br/>toda la república</p>
+            <p className="cm-lbl">
+              {isEn ? <>Developments across<br />Mexico</> : <>Desarrollos en<br />toda la república</>}
+            </p>
           </div>
           <div className="cm-stat">
             <span className="cm-num">+30</span>
-            <p className="cm-lbl">Amenidades de lujo<br/>en cada desarrollo</p>
+            <p className="cm-lbl">
+              {isEn ? <>Luxury amenities<br />per development</> : <>Amenidades de lujo<br />en cada desarrollo</>}
+            </p>
           </div>
         </div>
       </div>
