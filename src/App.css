@@ -15,7 +15,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5vw;background:rgba(15,37,71,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
 nav.scrolled{padding:.8rem 5vw}
-.nav-logo{display:flex;align-items:center}
+.nav-logo{display:flex;align-items:center;text-decoration:none;color:inherit}
+.nav-logo:visited{color:inherit}
 .nav-logo img{height:44px;object-fit:contain;}
 .nav-logo-fallback{font-family:'Playfair Display',serif;font-size:1.3rem;letter-spacing:.06em;color:var(--cream);display:none}
 .nav-logo-fallback span{color:var(--gold)}

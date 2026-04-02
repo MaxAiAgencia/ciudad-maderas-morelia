@@ -37,7 +37,11 @@ export default function Nav({ lang = 'es' }) {
 
   return (
     <nav id="mainNav" className={scrolled ? 'scrolled' : ''}>
-      <div className="nav-logo">
+      <Link
+        to="/"
+        className="nav-logo"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <div style={{ background: 'rgba(255,255,255,0.92)', padding: '5px 14px', borderRadius: '6px' }}>
           <img
             src="/logo-ciudad-maderas.png"
@@ -46,7 +50,7 @@ export default function Nav({ lang = 'es' }) {
           />
         </div>
         <span className="nav-logo-fallback" id="logoFallback">Ciudad<span>Maderas</span></span>
-      </div>
+      </Link>
 
       <ul className="nav-links" style={menuStyle}>
         <li><a href="#ventajas" onClick={e => { e.preventDefault(); scrollTo('#ventajas') }}>{tx.ventajas}</a></li>
