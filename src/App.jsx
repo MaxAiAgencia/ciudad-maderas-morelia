@@ -107,6 +107,18 @@ export default function App() {
       <div className="cur" id="cur" />
       <div className="cur-ring" id="curRing" />
 
+      {/* Tab "CONTACTA A UN ASESOR" — lado derecho */}
+      <a
+        href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"
+        target="_blank"
+        rel="noreferrer"
+        className="wa-tab"
+        aria-label="Contacta a un asesor"
+      >
+        <span className="wa-tab-lg">CONTACTA A UN ASESOR</span>
+        <span className="wa-tab-sm">CONTÁCTANOS</span>
+      </a>
+
       {/* WhatsApp flotante */}
       <a
         href="https://wa.me/524437919303?text=Hola%20Eduardo%2C%20me%20interesa%20información%20sobre%20terrenos%20Ciudad%20Maderas"

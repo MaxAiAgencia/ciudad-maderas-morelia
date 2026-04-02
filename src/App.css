@@ -45,6 +45,23 @@ nav.scrolled{padding:.8rem 5vw}
 .contadores-video{width:100%;height:auto;object-fit:contain;display:block}
 @media(min-width:1024px){.contadores-wrap{display:block}}
 
+/* CONTADORES MOBILE */
+.contadores-mobile{display:none;flex-direction:column;gap:2.5rem;background:var(--dark);padding:2.5rem 6vw 3rem;border-top:1px solid var(--border)}
+@media(max-width:1023px){.contadores-mobile{display:flex}}
+.cm-stat{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cm-num-row{display:flex;align-items:flex-start;gap:.3rem}
+.cm-prefix{font-size:.6rem;line-height:1.3;padding-top:1rem;color:rgba(244,239,230,.6)}
+.cm-num{font-size:3.5rem;font-weight:700;line-height:1;background:linear-gradient(to bottom,#DCCE9E,#DCCE9E,#B4A269);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cm-lbl{font-size:.8rem;color:rgba(244,239,230,.8);margin-top:.4rem;line-height:1.5}
+.cm-stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%}
+
+/* WA TAB */
+.wa-tab{position:fixed;right:0;top:40%;z-index:9998;background:#B4A269;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.15em;padding:.65rem .8rem;border-radius:6px 0 0 6px;white-space:nowrap;writing-mode:vertical-lr;text-decoration:none;transition:background .3s,transform .3s;text-transform:uppercase}
+.wa-tab:hover{background:#c8a855;transform:translateX(-4px)}
+.wa-tab-lg{display:none}
+.wa-tab-sm{display:block}
+@media(min-width:640px){.wa-tab-lg{display:block}.wa-tab-sm{display:none}}
+
 /* HERO CAROUSEL */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
 .hero-slides{position:absolute;inset:0;z-index:0}
