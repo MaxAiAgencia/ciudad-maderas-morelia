@@ -25,6 +25,8 @@ nav.scrolled{padding:.8rem 5vw}
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--dark);background:var(--gold);padding:.6rem 1.5rem;text-decoration:none;transition:background .25s,transform .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+.nav-casas-link{color:var(--gold)!important;font-weight:600!important}
+.nav-casas-link:visited{color:var(--gold)!important}
 .nav-lang-toggle{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.3rem .8rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s}
 .nav-lang-toggle:hover{background:var(--gold);color:var(--dark)}
 .nav-lang-mobile{display:none}

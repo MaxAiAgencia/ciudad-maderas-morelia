@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { CIUDADES } from '../data/ciudadesData'
 
 const TX = {
-  es: { ventajas: 'Ventajas', ciudades: 'Ciudades', credito: 'Crédito', contacto: 'Contacto', cta: 'Quiero invertir', toggle: 'EN' },
-  en: { ventajas: 'Benefits', ciudades: 'Cities', credito: 'Financing', contacto: 'Contact', cta: 'I Want to Invest', toggle: 'ES' },
+  es: { ventajas: 'Ventajas', ciudades: 'Ciudades', credito: 'Crédito', contacto: 'Contacto', casas: 'Casas Premium', cta: 'Quiero invertir', toggle: 'EN' },
+  en: { ventajas: 'Benefits', ciudades: 'Cities', credito: 'Financing', contacto: 'Contact', casas: 'Premium Homes', cta: 'I Want to Invest', toggle: 'ES' },
 }
 
 export default function Nav({ lang = 'es' }) {
@@ -97,6 +97,7 @@ export default function Nav({ lang = 'es' }) {
 
         <li><a href="#credito" onClick={e => { e.preventDefault(); scrollTo('#credito') }}>{tx.credito}</a></li>
         <li><a href="#contacto" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>{tx.contacto}</a></li>
+        <li><Link to="/casas-premium" className="nav-casas-link">{tx.casas}</Link></li>
         <li className="nav-lang-desktop">
           <Link to={toggleHref} className="nav-lang-toggle">{tx.toggle}</Link>
         </li>
