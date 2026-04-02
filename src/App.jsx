@@ -151,7 +151,7 @@ export default function App({ lang = 'es' }) {
       <Hero lang={lang} />
       <Contadores lang={lang} />
       <VideoSection lang={lang} />
-      <Ciudades />
+      <Ciudades lang={lang} />
       <Credito lang={lang} />
       <Ventajas lang={lang} />
       <Contacto lang={lang} />

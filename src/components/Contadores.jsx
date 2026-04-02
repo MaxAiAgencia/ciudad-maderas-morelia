@@ -2,17 +2,19 @@ export default function Contadores({ lang = 'es' }) {
   const isEn = lang === 'en'
   return (
     <>
-      {/* Desktop: video webm de contadores */}
-      <div className="contadores-wrap">
-        <video
-          src="https://storage.googleapis.com/landing-ciudad-maderas/somos/Contadores%20VF2.webm"
-          autoPlay loop muted playsInline
-          className="contadores-video"
-        />
-      </div>
+      {/* Desktop: video webm de contadores (solo versión ES — video tiene texto en español) */}
+      {!isEn && (
+        <div className="contadores-wrap">
+          <video
+            src="https://storage.googleapis.com/landing-ciudad-maderas/somos/Contadores%20VF2.webm"
+            autoPlay loop muted playsInline
+            className="contadores-video"
+          />
+        </div>
+      )}
 
-      {/* Mobile: stats con texto y animación de scroll */}
-      <div className="contadores-mobile">
+      {/* Mobile (ES) y todo (EN): stats con texto y animación de scroll */}
+      <div className={`contadores-mobile${isEn ? ' contadores-all-sizes' : ''}`}>
         <div className="cm-stat rev">
           <div className="cm-num-row">
             <span className="cm-prefix">{isEn ? 'More\nthan' : 'Más\nde'}</span>
