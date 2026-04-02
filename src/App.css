@@ -40,6 +40,11 @@ nav.scrolled{padding:.8rem 5vw}
 .ciudad-soon{font-size:.72rem;letter-spacing:.1em;color:var(--gold);margin-top:.3rem;opacity:0;transition:opacity .25s}
 .ciudad-card:hover .ciudad-soon{opacity:1}
 
+/* CONTADORES */
+.contadores-wrap{display:none;overflow:hidden;background:var(--dark);line-height:0}
+.contadores-video{width:100%;height:auto;object-fit:contain;display:block}
+@media(min-width:1024px){.contadores-wrap{display:block}}
+
 /* HERO CAROUSEL */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
 .hero-slides{position:absolute;inset:0;z-index:0}
