@@ -65,7 +65,7 @@ export default function Nav({ lang = 'es' }) {
             {tx.ciudades}
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginLeft: '4px' }}><polyline points="6 9 12 15 18 9"/></svg>
           </a>
-          {dropOpen && (
+          {dropOpen && !menuOpen && (
             <ul className="nav-dropdown-menu">
               {CIUDADES.map(c => (
                 <li key={c.slug}>
