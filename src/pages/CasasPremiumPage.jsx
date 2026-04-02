@@ -267,7 +267,7 @@ export default function CasasPremiumPage() {
           <div className="cpp-mens-content">
             <p className="cpp-mens-desde">DESDE</p>
             <img
-              src="https://storage.googleapis.com/landing-ciudad-maderas/casas/casas-premium/casas_casas-premium_frame-5-Mensualidades-2.svg"
+              src="https://storage.googleapis.com/landing-ciudad-maderas/casas/casas-premium/casas_casas-premium_frame-5-Mensualidades-2.svg%20"
               alt="Mensualidades desde"
               className="cpp-mens-monto"
             />
