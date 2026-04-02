@@ -93,7 +93,7 @@ export default function Nav({ lang = 'es' }) {
 
         <li><a href="#credito" onClick={e => { e.preventDefault(); scrollTo('#credito') }}>{tx.credito}</a></li>
         <li><a href="#contacto" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>{tx.contacto}</a></li>
-        <li>
+        <li className="nav-lang-desktop">
           <Link to={toggleHref} className="nav-lang-toggle">{tx.toggle}</Link>
         </li>
       </ul>
@@ -101,6 +101,8 @@ export default function Nav({ lang = 'es' }) {
       <a href="#contacto" className="nav-cta" onClick={e => { e.preventDefault(); scrollTo('#contacto') }}>
         {tx.cta}
       </a>
+
+      <Link to={toggleHref} className="nav-lang-toggle nav-lang-mobile">{tx.toggle}</Link>
 
       <button className="hamburger" onClick={() => setMenuOpen(v => !v)} aria-label="Menú">
         <span /><span /><span />

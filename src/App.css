@@ -26,6 +26,8 @@ nav.scrolled{padding:.8rem 5vw}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
 .nav-lang-toggle{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.3rem .8rem;border-radius:4px;text-decoration:none;transition:background .2s,color .2s}
 .nav-lang-toggle:hover{background:var(--gold);color:var(--dark)}
+.nav-lang-mobile{display:none}
+@media(max-width:768px){.nav-lang-mobile{display:inline-flex}.nav-lang-desktop{display:none}}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .hamburger span{width:24px;height:2px;background:var(--cream);display:block;transition:.3s}
 /* NAV DROPDOWN */
