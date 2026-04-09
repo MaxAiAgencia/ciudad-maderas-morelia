@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Ventajas from './components/Ventajas'
 import Ciudades from './components/Ciudades'
 import Credito from './components/Credito'
+import CasasPremiumSection from './components/CasasPremiumSection'
 import Contadores from './components/Contadores'
 import VideoSection from './components/VideoSection'
 import Contacto from './components/Contacto'
@@ -152,6 +153,7 @@ export default function App({ lang = 'es' }) {
       <Contadores lang={lang} />
       <VideoSection lang={lang} />
       <Ciudades lang={lang} />
+      <CasasPremiumSection lang={lang} />
       <Credito lang={lang} />
       <Ventajas lang={lang} />
       <Contacto lang={lang} />
