@@ -4,6 +4,12 @@ import Contacto from '../components/Contacto'
 import Footer from '../components/Footer'
 import './CasasPremiumPage.css'
 
+const WA_NUM = '524433250555'
+function waModelo(nombre) {
+  const txt = `Hola, me interesa información sobre el modelo *${nombre}* de Casas Premium Ciudad Maderas 🏠`
+  return `https://wa.me/${WA_NUM}?text=${encodeURIComponent(txt)}`
+}
+
 const MODELOS = [
   {
     id: 'alba',
@@ -196,8 +202,7 @@ export default function CasasPremiumPage() {
                   <ul className="cpp-card-features">
                     {m.features.map((f, i) => <li key={i}>{f}</li>)}
                   </ul>
-                  <a href="#contacto" className="cpp-card-cta"
-                    onClick={e => { e.preventDefault(); scrollToId('#contacto') }}>
+                  <a href={waModelo(m.nombre)} target="_blank" rel="noreferrer" className="cpp-card-cta">
                     Me interesa este modelo →
                   </a>
                 </div>
