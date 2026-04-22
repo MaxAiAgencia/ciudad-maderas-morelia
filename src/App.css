@@ -119,8 +119,8 @@ nav.scrolled{padding:.8rem 5vw}
 .cp-sec-cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:.4rem;text-decoration:none}
 .cp-sec-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .cp-sec-card{position:relative;aspect-ratio:4/3;overflow:hidden;display:block;text-decoration:none}
-.cp-sec-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.cp-sec-card:hover img{transform:scale(1.05)}
+.cp-sec-card img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.cp-sec-card:hover img{transform:scale(1.03)}
 .cp-sec-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,25,47,.75) 0%,transparent 55%)}
 .cp-sec-card-name{position:absolute;bottom:.8rem;left:.9rem;font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--cream)}
 @media(max-width:900px){.cp-sec-inner{grid-template-columns:1fr;gap:3rem}}
