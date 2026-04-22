@@ -79,7 +79,7 @@ const MODELOS = [
     recamaras: '3',
     banos: '2 + 1 externo',
     features: ['Recámara principal con walk-in clóset', 'Clóset de blancos', 'Cuarto de lavado en roof', 'Terraza roof'],
-    tour: null,
+    tour: 'https://kuula.co/share/collection/7HR52?logo=0&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1',
   },
 ]
 
