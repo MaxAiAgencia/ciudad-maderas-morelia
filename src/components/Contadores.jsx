@@ -28,13 +28,20 @@ export default function Contadores({ lang = 'es' }) {
         <div className="cm-stat rev">
           <span className="cm-num">+124,000</span>
           <p className="cm-lbl">
-            {isEn ? 'Residential and commercial lots' : 'Lotes habitacionales y comerciales'}
+            {isEn ? 'Satisfied Clients' : 'Clientes Satisfechos'}
+          </p>
+        </div>
+
+        <div className="cm-stat rev">
+          <span className="cm-num">+60,000</span>
+          <p className="cm-lbl">
+            {isEn ? 'Lots Delivered' : 'Terrenos entregados'}
           </p>
         </div>
 
         <div className="cm-stats-row rev">
           <div className="cm-stat">
-            <span className="cm-num">28</span>
+            <span className="cm-num">34</span>
             <p className="cm-lbl">
               {isEn ? <>Developments across<br />Mexico</> : <>Desarrollos en<br />toda la república</>}
             </p>
