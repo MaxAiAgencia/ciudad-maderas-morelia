@@ -32,13 +32,6 @@ export default function Contadores({ lang = 'es' }) {
           </p>
         </div>
 
-        <div className="cm-stat rev">
-          <span className="cm-num">+60,000</span>
-          <p className="cm-lbl">
-            {isEn ? 'Lots Delivered' : 'Terrenos entregados'}
-          </p>
-        </div>
-
         <div className="cm-stats-row rev">
           <div className="cm-stat">
             <span className="cm-num">34</span>
@@ -47,9 +40,9 @@ export default function Contadores({ lang = 'es' }) {
             </p>
           </div>
           <div className="cm-stat">
-            <span className="cm-num">+30</span>
+            <span className="cm-num">+60,000</span>
             <p className="cm-lbl">
-              {isEn ? <>Luxury amenities<br />per development</> : <>Amenidades de lujo<br />en cada desarrollo</>}
+              {isEn ? <>Lots<br />Delivered</> : <>Terrenos<br />entregados</>}
             </p>
           </div>
         </div>
