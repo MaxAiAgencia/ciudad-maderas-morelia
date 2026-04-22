@@ -19,6 +19,7 @@ const MODELOS = [
     recamaras: '2 + multiusos',
     banos: '1½',
     features: ['Sala-comedor abierta', 'Cocina con barra', 'Cuarto de servicio', 'Roof con opción pérgola'],
+    tour: 'https://kuula.co/share/collection/7bD8t?logo=0&info=1&fs=1&vr=1&sd=1&thumbs=1',
   },
   {
     id: 'aura',
@@ -28,6 +29,7 @@ const MODELOS = [
     recamaras: '2',
     banos: '1',
     features: ['Sala-comedor abierta', 'Cocina con barra', 'Recámara principal con walking clóset'],
+    tour: 'https://kuula.co/share/collection/7bdmn?logo=0&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1',
   },
   {
     id: 'nova',
@@ -37,6 +39,7 @@ const MODELOS = [
     recamaras: '3 + opción cuarta en roof',
     banos: '3',
     features: ['Cocina con isla desayunadora', 'Cuarto TV', 'Roof garden', 'Baño en roof'],
+    tour: 'https://kuula.co/share/collection/7bKM6?logo=0&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1',
   },
   {
     id: 'aqua',
@@ -46,6 +49,7 @@ const MODELOS = [
     recamaras: '2',
     banos: '2',
     features: ['Recámara principal con walking clóset y balcón', 'Sala TV', 'Patio de servicio', 'Amplios espacios'],
+    tour: 'https://kuula.co/share/collection/7bKJz?logo=0&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1',
   },
   {
     id: 'stella',
@@ -55,6 +59,7 @@ const MODELOS = [
     recamaras: '3',
     banos: '2',
     features: ['Concepto abierto', 'Recámara principal con walking clóset', 'Terraza en jardín', 'Sala TV'],
+    tour: 'https://kuula.co/share/collection/7bn1S?logo=0&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1',
   },
   {
     id: 'lucero',
@@ -64,6 +69,7 @@ const MODELOS = [
     recamaras: '3 + opción cuarta en roof',
     banos: '3',
     features: ['Cocina con isla desayunadora', 'Roof garden', 'Baño en roof', 'Amplios espacios'],
+    tour: 'https://kuula.co/share/collection/7bHzX?logo=0&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1',
   },
   {
     id: 'antara',
@@ -73,6 +79,7 @@ const MODELOS = [
     recamaras: '3',
     banos: '2 + 1 externo',
     features: ['Recámara principal con walk-in clóset', 'Clóset de blancos', 'Cuarto de lavado en roof', 'Terraza roof'],
+    tour: null,
   },
 ]
 
@@ -205,6 +212,12 @@ export default function CasasPremiumPage() {
                   <a href={waModelo(m.nombre)} target="_blank" rel="noreferrer" className="cpp-card-cta">
                     Me interesa este modelo →
                   </a>
+                  {m.tour && (
+                    <a href={m.tour} target="_blank" rel="noreferrer" className="cpp-card-tour">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4M8 12h8"/></svg>
+                      Visita el recorrido virtual
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
